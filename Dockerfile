@@ -6,6 +6,8 @@ RUN apk update && \
     ln -s /usr/lib/docker/docker /usr/bin/docker && \
     rm -rf /var/cache/apk/*
 
+VOLUME ["/mnt"]
+
 WORKDIR /mnt
 
 CMD [ "/usr/bin/ansible-playbook", "playbook.yml" ]
