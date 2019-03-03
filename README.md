@@ -1,8 +1,8 @@
 # Ansible + Docker CLI
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/haxorof/ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
-[![Docker Build Status](https://img.shields.io/docker/build/haxorof/ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/builds/)
-[![Docker Automated build](https://img.shields.io/docker/automated/haxorof/ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/builds/)
+[![Docker Image Size](https://img.shields.io/microbadger/image-size/haxorof/ansible/latest.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
+[![License](https://img.shields.io/github/license/haxorof/docker-ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
 
 Ansible with Docker CLI inside on an Alpine distribution.
 
