@@ -15,7 +15,7 @@ RUN apk update \
     openssl-dev \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
-    && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-18.09.6.tgz | tar -xz -C /usr/lib \
+    && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-18.09.7.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \
     && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/local/bin/python3' > /etc/ansible/hosts \
@@ -25,4 +25,4 @@ RUN apk update \
 
 WORKDIR /mnt
 
-CMD [ "/usr/bin/ansible-playbook", "playbook.yml" ]
+CMD [ "ansible-playbook", "playbook.yml" ]
