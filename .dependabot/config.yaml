@@ -3,10 +3,14 @@ update_configs:
   - package_manager: "docker"
     directory: "/"
     update_schedule: "daily"
+    default_assignees:
+      - "haxorof"
     default_reviewers:
       - "haxorof"
   - package_manager: "python"
     directory: "/"
     update_schedule: "live"
+    default_assignees:
+      - "haxorof"
     default_reviewers:
       - "haxorof"
