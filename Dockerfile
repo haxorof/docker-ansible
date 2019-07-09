@@ -1,4 +1,4 @@
-FROM python:3.7.3-alpine
+FROM python:3.7.4-alpine
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
       org.opencontainers.image.description="Ansible + Docker CLI" \
