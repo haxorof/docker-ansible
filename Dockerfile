@@ -15,6 +15,7 @@ RUN apk update \
     openssl-dev \
     openssh \
     sshpass \
+    git \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-19.03.1.tgz | tar -xz -C /usr/lib \
