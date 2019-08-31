@@ -1,10 +1,31 @@
-# Ansible + Docker CLI
+# Ansible + additions
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/haxorof/ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
 [![Docker Image Size](https://img.shields.io/microbadger/image-size/haxorof/ansible/latest.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
 [![License](https://img.shields.io/github/license/haxorof/docker-ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
 
-Ansible with Docker CLI inside on an Alpine distribution.
+Ansible with additions.
+
+## Additions
+
+Users/Groups:
+
+- ansible-1000
+  - uid=1000
+  - gid=1000
+- ansible-1001
+  - uid=1001
+  - gid=1001
+
+Python libraries:
+
+- jmespath
+
+Packages/Tools:
+
+- docker-cli
+- git
+- openssh
 
 ## How to use this container
 
