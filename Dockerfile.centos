@@ -1,4 +1,4 @@
-FROM centos:8
+FROM centos:7
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
