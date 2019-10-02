@@ -5,10 +5,10 @@ update_configs:
     update_schedule: "daily"
     automerged_updates:
       - match:
-          update_type: "all"
+          update_type: "semver:minor"
   - package_manager: "python"
     directory: "/"
     update_schedule: "live"
     automerged_updates:
       - match:
-          update_type: "all"
+          update_type: "semver:minor"
