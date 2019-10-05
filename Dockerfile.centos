@@ -1,13 +1,14 @@
-FROM centos:7
+FROM centos:8
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
     org.opencontainers.image.source="https://github.com/haxorof/docker-ansible" \
     org.opencontainers.image.licenses="MIT"    
 
-ENV DOCKER_VERSION 19.03.1
+ENV DOCKER_VERSION 19.03.2
 
 COPY requirements.txt .
+#COPY bin/sshpass /usr/bin/sshpass
 
 RUN yum install -y epel-release \
     && yum upgrade -y \
@@ -15,17 +16,18 @@ RUN yum install -y epel-release \
     openssh \
     sshpass \
     git \
-    python-pip \
+    python3-pip \
     wget \
     curl \
-    && python -m pip install --no-cache-dir --upgrade pip \
-    && python -m pip install --no-cache-dir -r requirements.txt \
+    && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir -r requirements.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \
-    && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python' > /etc/ansible/hosts \
+    && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python3' > /etc/ansible/hosts \
     && yum clean all \
     && rm -rf /var/cache/yum \
+    #&& chmod +x /usr/bin/sshpass \
     && useradd -u 1000 ansible-1000 \
     && useradd -u 1001 ansible-1001
 
