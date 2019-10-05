@@ -3,12 +3,10 @@ update_configs:
   - package_manager: "docker"
     directory: "/"
     update_schedule: "daily"
-    automerged_updates:
-      - match:
-          update_type: "semver:minor"
+    default_assignees:
+      - "haxorof"
   - package_manager: "python"
     directory: "/"
     update_schedule: "live"
-    automerged_updates:
-      - match:
-          update_type: "semver:minor"
+    default_assignees:
+      - "haxorof"
