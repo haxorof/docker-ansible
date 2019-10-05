@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Minimal possible replacement for sshpass to handle ansible_ssh_pass
+export DISPLAY=:
+
+if [[ $1 == -d* ]]; then
+    FD=${1:2}
+    shift
+fi
+TMPFILE=$(mktemp /tmp/ssh_askpass.XXXXXX)
+export SSH_ASKPASS=$TMPFILE
+read -u $FD SSH_PASS
+cat << EOF > $TMPFILE
+#!/usr/bin/env bash
+echo '$SSH_PASS'
+EOF
+unset SSH_PASS
+unset FD
+chmod +x $TMPFILE
+trap 'rm -f -- "$TMPFILE"' INT TERM HUP EXIT
+setsid $@
