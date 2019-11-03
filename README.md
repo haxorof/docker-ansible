@@ -20,6 +20,7 @@ Users/Groups:
 Python libraries:
 
 - jmespath
+- pyvmomi (for VMWare modules)
 
 Packages/Tools:
 
