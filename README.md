@@ -8,6 +8,14 @@ Ansible with additions.
 
 ## Additions
 
+Manual patches:
+
+- Applied fixes coming in Ansible 2.10:
+  - nmap inventory plugin (updated 3 Feb 2020)
+    - https://github.com/ansible/ansible/blob/68b981ae21f85e96d951aefac6acd1b0d169cefe/lib/ansible/plugins/inventory/nmap.py
+  - netbox inventory plugin (updated 17 Oct 2019)
+    - https://github.com/ansible/ansible/blob/faf8fc62cb74f442c2446ac6f5798cecd107feff/lib/ansible/plugins/inventory/netbox.py
+
 Users/Groups:
 
 - ansible-1000
