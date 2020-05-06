@@ -30,10 +30,10 @@ RUN yum install -y epel-release \
     #&& chmod +x /usr/bin/sshpass \
     && useradd -u 1000 ansible-1000 \
     && useradd -u 1001 ansible-1001 \
-    && sh -c "wget -O $(ls /usr/lib/python*/site-packages/ansible/plugins/inventory/netbox.py) https://raw.githubusercontent.com/ansible/ansible/faf8fc62cb74f442c2446ac6f5798cecd107feff/lib/ansible/plugins/inventory/netbox.py" \
-    && sh -c "wget -O $(ls /usr/lib/python*/site-packages/ansible/plugins/inventory/nmap.py) https://raw.githubusercontent.com/ansible/ansible/68b981ae21f85e96d951aefac6acd1b0d169cefe/lib/ansible/plugins/inventory/nmap.py" \
-    && sh -c "rm $(ls /usr/lib/python*/site-packages/ansible/plugins/inventory/netbox.pyc) || exit 0" \
-    && sh -c "rm $(ls /usr/lib/python*/site-packages/ansible/plugins/inventory/nmap.pyc) || exit 0"
+    && sh -c "wget -O $(ls /usr/local/lib/python*/site-packages/ansible/plugins/inventory/netbox.py) https://raw.githubusercontent.com/ansible/ansible/faf8fc62cb74f442c2446ac6f5798cecd107feff/lib/ansible/plugins/inventory/netbox.py" \
+    && sh -c "wget -O $(ls /usr/local/lib/python*/site-packages/ansible/plugins/inventory/nmap.py) https://raw.githubusercontent.com/ansible/ansible/68b981ae21f85e96d951aefac6acd1b0d169cefe/lib/ansible/plugins/inventory/nmap.py" \
+    && sh -c "rm $(ls /usr/local/lib/python*/site-packages/ansible/plugins/inventory/netbox.pyc)" \
+    && sh -c "rm $(ls /usr/local/lib/python*/site-packages/ansible/plugins/inventory/nmap.pyc)"
 
 WORKDIR /mnt
 
