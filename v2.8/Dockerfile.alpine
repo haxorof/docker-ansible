@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.title="haxorof/ansible" \
 
 ENV DOCKER_VERSION 19.03.8
 
-COPY requirements.txt .
+COPY v2.8/requirements.txt .
 
 RUN apk update \
     && apk add --no-cache linux-headers \
