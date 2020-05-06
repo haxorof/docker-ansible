@@ -17,7 +17,7 @@ Ansible with additions.
 
 ## Shared Tags
 
-- `v2.9`, `latest`
+- `v2.9`, `latest-alpine`, `latest`
   - `v2.9-alpine`
 - `latest-centos7`
   - `v2.9-centos7`

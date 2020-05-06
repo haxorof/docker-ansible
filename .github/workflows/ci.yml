@@ -27,6 +27,7 @@ jobs:
           build_args: ansible_version=${{ matrix.version }},docker_version=19.03.8
           tags: ${{ matrix.version }}-${{ matrix.os }}
           dockerfile: Dockerfile.${{ matrix.os }}
+          push: ${{ endsWith(github.ref, '/master') }}
 
   build_push_version_latest:
     needs: build_push
@@ -48,3 +49,4 @@ jobs:
           build_args: ansible_version=${{ matrix.version }},docker_version=19.03.8
           tags: ${{ matrix.version }}
           dockerfile: Dockerfile.${{ matrix.os }}
+          push: ${{ endsWith(github.ref, '/master') }}
