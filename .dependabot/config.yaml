@@ -1,12 +1,34 @@
 version: 1
 update_configs:
   - package_manager: "docker"
-    directory: "/"
+    directory: "/v2.8/"
     update_schedule: "daily"
     default_assignees:
       - "haxorof"
   - package_manager: "python"
-    directory: "/"
+    directory: "/v2.8/"
     update_schedule: "live"
+    allowed_updates:
+      - match:
+          update_type: "security"
+          dependency_name: "ansible"
+      - match:
+          update_type: "all"
+    default_assignees:
+      - "haxorof"
+  - package_manager: "docker"
+    directory: "/v2.9/"
+    update_schedule: "daily"
+    default_assignees:
+      - "haxorof"
+  - package_manager: "python"
+    directory: "/v2.9/"
+    update_schedule: "live"
+    allowed_updates:
+      - match:
+          update_type: "security"
+          dependency_name: "ansible"
+      - match:
+          update_type: "all"
     default_assignees:
       - "haxorof"
