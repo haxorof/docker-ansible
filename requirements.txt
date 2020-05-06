@@ -1,3 +1,0 @@
- ansible==2.9.7
- jmespath==0.9.5
- pyvmomi==7.0
