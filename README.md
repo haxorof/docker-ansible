@@ -6,14 +6,25 @@
 
 Ansible with additions.
 
-## Versions
+## Simple Tags
 
-- `v2.9-alpine`, `v2.9`, `latest`
+- `v2.9-alpine`
 - `v2.9-centos7`
 - `v2.9-centos8`
-- `v2.8-alpine`, `v2.8`
+- `v2.8-alpine`
 - `v2.8-centos7`
 - `v2.8-centos8`
+
+## Shared Tags
+
+- `v2.9`, `latest`
+  - `v2.9-alpine`
+- `latest-centos7`
+  - `v2.9-centos7`
+- `latest-centos8`
+  - `v2.9-centos8`
+- `v2.8`
+  - `v2.8-alpine`
 
 ## Additions
 

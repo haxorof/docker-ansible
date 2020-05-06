@@ -5,9 +5,10 @@ LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.source="https://github.com/haxorof/docker-ansible" \
     org.opencontainers.image.licenses="MIT"    
 
-ENV DOCKER_VERSION 19.03.8
+ARG ansible_version
+ARG docker_version
 
-COPY v2.9/requirements.txt .
+COPY requirements/requirements-${ansible_version}.txt ./requirements.txt
 
 RUN apk update \
     && apk add --no-cache linux-headers \
