@@ -13,7 +13,7 @@ update_configs:
     update_schedule: "live"
     allowed_updates:
       - match:
-          update_type: "security"
+          update_type: "semver:patch"
           dependency_name: "ansible"
       - match:
           update_type: "all"
