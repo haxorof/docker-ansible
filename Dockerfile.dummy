@@ -1,0 +1,3 @@
+FROM haxorof/ansible:latest
+
+# Dummy just to get text on Docker Hub to be updated automatically and link to github.
