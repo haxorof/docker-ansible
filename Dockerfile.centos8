@@ -15,6 +15,7 @@ RUN yum install -y epel-release \
     openssh \
     sshpass \
     git \
+    sudo \
     python3-pip \
     wget \
     curl \

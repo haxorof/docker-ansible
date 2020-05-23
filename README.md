@@ -41,14 +41,16 @@ Python libraries:
 
 - jmespath
 - pyvmomi (for VMWare modules)
+- netaddr
 
 Packages/Tools:
 
 - docker-cli
 - git
 - openssh
+- sudo
 
-Patched files in Ansible v2.9 and earlier with upcoming changes in v2.10:
+Backported upcoming changes in v2.10:
 
 - [netbox.py](https://raw.githubusercontent.com/ansible/ansible/faf8fc62cb74f442c2446ac6f5798cecd107feff/lib/ansible/plugins/inventory/netbox.py)
 - [nmap.pyc](https://raw.githubusercontent.com/ansible/ansible/68b981ae21f85e96d951aefac6acd1b0d169cefe/lib/ansible/plugins/inventory/nmap.py)
