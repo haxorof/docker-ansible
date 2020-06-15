@@ -29,29 +29,38 @@ Ansible with additions.
 
 ## Additions
 
-Users/Groups:
+### Users/Groups
 
-- ansible-1000
+Container will run as user `ansible-10000` by default. However, when you build your own image based on this `root` will be set and you need to set it back yourself to `ansible-10000` if you want.
+
+- `ansible-1000`
   - uid=1000
   - gid=1000
-- ansible-1001
+- `ansible-1001`
   - uid=1001
   - gid=1001
+- `ansible-10000`
+  - uid=10000
+  - gid=10000
 
-Python libraries:
+**Note!** All ansible users will have sudo rights. This is for convenience since some roles etc are not that well implemented.
+
+### Python libraries
 
 - jmespath
 - pyvmomi (for VMWare modules)
 - netaddr
 
-Packages/Tools:
+### Packages/Tools
 
 - docker-cli
 - git
 - openssh
 - sudo
 
-Backported upcoming changes in v2.10:
+### Backported fixes
+
+**Important!** From Ansible 2.10 plugins will have its own lifecycle and not included in `ansible/ansible` repository.
 
 - [netbox.py](https://raw.githubusercontent.com/ansible/ansible/faf8fc62cb74f442c2446ac6f5798cecd107feff/lib/ansible/plugins/inventory/netbox.py)
 - [nmap.pyc](https://raw.githubusercontent.com/ansible/ansible/68b981ae21f85e96d951aefac6acd1b0d169cefe/lib/ansible/plugins/inventory/nmap.py)

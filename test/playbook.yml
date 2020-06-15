@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  tasks:
+    - shell: cat /etc/os-release
+    - shell: cat /etc/sudoers.d/ansible
+      become: yes

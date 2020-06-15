@@ -27,7 +27,7 @@ jobs:
           repository: haxorof/ansible
           tag_with_sha: false
           add_git_labels: true
-          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.8
+          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9
           tags: ${{ matrix.version }}-${{ matrix.os }}
           dockerfile: Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
@@ -50,7 +50,7 @@ jobs:
           repository: haxorof/ansible
           tag_with_sha: false
           add_git_labels: true
-          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.8
+          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9
           tags: ${{ matrix.version }}
           dockerfile: Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
