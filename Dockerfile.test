@@ -1,4 +1,0 @@
-FROM haxorof/ansible:master
-RUN yum install -y jq
-# Dummy just to get text on Docker Hub to be updated automatically and link to github.
-USER ansible-10000
