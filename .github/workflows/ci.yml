@@ -35,6 +35,7 @@ jobs:
   build_push_version_latest:
     needs: build_push
     runs-on: ubuntu-latest
+    if: endsWith(github.ref, '/master')
     strategy:
       matrix:
         os: [alpine]
