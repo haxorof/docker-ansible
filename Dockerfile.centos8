@@ -23,6 +23,10 @@ RUN yum install -y epel-release \
     python3-pip \
     wget \
     curl \
+    # install gosu for a better su+exec command (remove sudo if this works)
+    && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
+    && chmod +x /usr/bin/gosu \
+    && gosu nobody true \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \

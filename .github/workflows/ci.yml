@@ -24,9 +24,9 @@ jobs:
         id: tag_formatter
         run: |
           if [[ "$MATRIX_OS" == 'main' ]]; then
-              echo "::set-output name=format::$MATRIX_VERSION"
               # Instead of using symbolic links
-              cp Dockerfile.alpine Dockerfile.main
+              cp Dockerfile.alpine Dockerfile.main > /dev/null 2>&1
+              echo "::set-output name=format::$MATRIX_VERSION"
           else
               echo "::set-output name=format::${MATRIX_VERSION}-${MATRIX_OS}"
           fi
@@ -34,10 +34,12 @@ jobs:
           MATRIX_OS: ${{ matrix.os }}
           MATRIX_VERSION: ${{ matrix.version }}
 
-      - name: Lint Dockerfile
-        uses: docker://replicated/dockerfilelint:latest
-        with:
-          args: Dockerfile.${{ matrix.os }}
+      # Since sudo is used this will complain and suggest gosu but that
+      # needs to be tested if gosu can replace sudo for Ansible use-cases.
+      # - name: Lint Dockerfile
+      #   uses: docker://replicated/dockerfilelint:latest
+      #   with:
+      #     args: Dockerfile.${{ matrix.os }}
 
       - name: Build and Push
         uses: docker/build-push-action@v1
@@ -47,7 +49,7 @@ jobs:
           repository: haxorof/ansible
           tag_with_sha: false
           add_git_labels: true
-          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9
+          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9,gosu_version=1.12
           tags: ${{ steps.tag_formatter.outputs.format }}
           dockerfile: Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
