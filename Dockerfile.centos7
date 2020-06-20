@@ -6,6 +6,7 @@ LABEL org.opencontainers.image.title="haxorof/ansible" \
 
 ARG ansible_version
 ARG docker_version
+ARG gosu_version
 
 ONBUILD USER root
 
