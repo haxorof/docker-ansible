@@ -14,13 +14,33 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [alpine, centos7, centos8]
+        os: [alpine, centos7, centos8, main]
         version: [v2.8, v2.9, latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - uses: docker/build-push-action@v1
+      - name: Determine tag format
+        id: tag_formatter
+        run: |
+          if [[ "$MATRIX_OS" == 'main' ]]; then
+              echo "::set-output name=format::$MATRIX_VERSION"
+              # Instead of using symbolic links
+              cp Dockerfile.alpine Dockerfile.main
+          else
+              echo "::set-output name=format::${MATRIX_VERSION}-${MATRIX_OS}"
+          fi
+        env:
+          MATRIX_OS: ${{ matrix.os }}
+          MATRIX_VERSION: ${{ matrix.version }}
+
+      - name: Lint Dockerfile
+        uses: docker://replicated/dockerfilelint:latest
+        with:
+          args: Dockerfile.${{ matrix.os }}
+
+      - name: Build and Push
+        uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
@@ -28,30 +48,6 @@ jobs:
           tag_with_sha: false
           add_git_labels: true
           build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9
-          tags: ${{ matrix.version }}-${{ matrix.os }}
-          dockerfile: Dockerfile.${{ matrix.os }}
-          push: ${{ endsWith(github.ref, '/master') }}
-
-  build_push_version_latest:
-    needs: build_push
-    runs-on: ubuntu-latest
-    if: endsWith(github.ref, '/master')
-    strategy:
-      matrix:
-        os: [alpine]
-        version: [v2.8, v2.9, latest]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: haxorof/ansible
-          tag_with_sha: false
-          add_git_labels: true
-          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9
-          tags: ${{ matrix.version }}
+          tags: ${{ steps.tag_formatter.outputs.format }}
           dockerfile: Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}

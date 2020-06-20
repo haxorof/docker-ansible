@@ -1,7 +1,6 @@
 # Ansible + additions
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/haxorof/ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
-[![Docker Image Size](https://img.shields.io/microbadger/image-size/haxorof/ansible/latest.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
 [![License](https://img.shields.io/github/license/haxorof/docker-ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
 [![CI](https://github.com/haxorof/docker-ansible/workflows/CI/badge.svg)](https://github.com/haxorof/docker-ansible/actions?query=workflow%3ACI)
 
