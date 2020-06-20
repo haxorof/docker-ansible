@@ -24,7 +24,7 @@ RUN yum install -y epel-release \
     wget \
     curl \
     # install gosu for a better su+exec command (remove sudo if this works)
-    && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-$(dpkg --print-architecture | awk -F- '{ print $NF }')" \
+    && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
     && python3 -m pip install --no-cache-dir --upgrade pip \
