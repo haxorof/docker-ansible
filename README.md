@@ -1,7 +1,7 @@
 # Ansible + additions
 
-[![Docker Pulls](https://img.shields.io/docker/pulls/haxorof/ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
-[![License](https://img.shields.io/github/license/haxorof/docker-ansible.svg?style=popout-square)](https://hub.docker.com/r/haxorof/ansible/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/haxorof/ansible)](https://hub.docker.com/r/haxorof/ansible/)
+[![License](https://img.shields.io/github/license/haxorof/docker-ansible)](https://hub.docker.com/r/haxorof/ansible/)
 [![CI](https://github.com/haxorof/docker-ansible/workflows/CI/badge.svg)](https://github.com/haxorof/docker-ansible/actions?query=workflow%3ACI)
 
 Ansible with additions.
@@ -91,4 +91,3 @@ In a second terminal run the following which will do an Ansible ping to that Pyt
 ```console
 # docker run --rm -v /var/run/docker.sock:/var/run/docker.sock haxorof/ansible sh -c "echo 'target ansible_connection=docker' > hosts && ansible -m ping -i hosts all"
 ```
-
