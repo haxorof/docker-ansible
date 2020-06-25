@@ -8,6 +8,9 @@ Ansible with additions.
 
 ## Simple Tags
 
+- `v2.10-pre-alpine`
+- `v2.10-pre-centos7`
+- `v2.10-pre-centos8`
 - `v2.9-alpine`
 - `v2.9-centos7`
 - `v2.9-centos8`
@@ -17,6 +20,8 @@ Ansible with additions.
 
 ## Shared Tags
 
+- `v2.10-pre`
+  - `v2.10-pre-alpine`
 - `v2.9`, `latest-alpine`, `latest`
   - `v2.9-alpine`
 - `latest-centos7`
@@ -57,7 +62,7 @@ Container will run as user `ansible-10000` by default. However, when you build y
 - openssh
 - sudo
 
-### Backported fixes
+### Backported fixes for v2.9 and below
 
 **Important!** From Ansible 2.10 plugins will have its own lifecycle and not included in `ansible/ansible` repository.
 
