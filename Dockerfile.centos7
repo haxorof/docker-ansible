@@ -2,7 +2,7 @@ FROM centos:7
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
-    org.opencontainers.image.licenses="MIT"    
+    org.opencontainers.image.licenses="MIT"
 
 ARG ansible_version
 ARG docker_version
