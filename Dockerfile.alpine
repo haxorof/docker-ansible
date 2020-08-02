@@ -8,6 +8,9 @@ ARG ansible_version
 ARG docker_version
 ARG gosu_version
 
+ENV LANG en_US.utf8
+ENV LC_ALL en_US.utf8
+
 ONBUILD USER root
 
 COPY requirements/requirements-${ansible_version}.txt ./requirements.txt
