@@ -1,4 +1,4 @@
-ansible==2.8.14
+ansible==2.9.12
 jmespath==0.10.0
 pyvmomi==7.0
 netaddr==0.8.0
