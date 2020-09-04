@@ -27,6 +27,7 @@ RUN yum install -y epel-release \
     python3-pip \
     wget \
     curl \
+    glibc-langpack-en \
     tzdata \
     # install gosu for a better su+exec command (remove sudo if this works)
     && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
