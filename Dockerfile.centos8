@@ -8,8 +8,8 @@ ARG ansible_version
 ARG docker_version
 ARG gosu_version
 
-ENV LANG en_US.utf8
-ENV LC_ALL en_US.utf8
+ENV LANG en_US.UTF-8
+ENV LC_ALL en_US.UTF-8
 
 ONBUILD USER root
 
@@ -27,6 +27,7 @@ RUN yum install -y epel-release \
     python3-pip \
     wget \
     curl \
+    tzdata \
     # install gosu for a better su+exec command (remove sudo if this works)
     && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
