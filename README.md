@@ -8,9 +8,9 @@ Ansible with additions.
 
 ## Simple Tags
 
-- `v2.10-pre-alpine`
-- `v2.10-pre-centos7`
-- `v2.10-pre-centos8`
+- `v2.10-alpine`
+- `v2.10-centos7`
+- `v2.10-centos8`
 - `v2.9-alpine`
 - `v2.9-centos7`
 - `v2.9-centos8`
@@ -20,9 +20,9 @@ Ansible with additions.
 
 ## Shared Tags
 
-- `v2.10-pre`
-  - `v2.10-pre-alpine`
-- `v2.9`, `latest-alpine`, `latest`
+- `v2.10`, `latest-alpine`, `latest`
+  - `v2.10-alpine`
+- `v2.9`
   - `v2.9-alpine`
 - `latest-centos7`
   - `v2.9-centos7`
@@ -61,13 +61,7 @@ Container will run as user `ansible-10000` by default. However, when you build y
 - git
 - openssh
 - sudo
-
-### Backported fixes for v2.9 and below
-
-**Important!** From Ansible 2.10 plugins will have its own lifecycle and not included in `ansible/ansible` repository.
-
-- [netbox.py](https://raw.githubusercontent.com/ansible/ansible/faf8fc62cb74f442c2446ac6f5798cecd107feff/lib/ansible/plugins/inventory/netbox.py)
-- [nmap.pyc](https://raw.githubusercontent.com/ansible/ansible/68b981ae21f85e96d951aefac6acd1b0d169cefe/lib/ansible/plugins/inventory/nmap.py)
+- gosu
 
 ## How to use this container
 

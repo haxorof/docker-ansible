@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [alpine, centos7, centos8, main]
-        version: [v2.8, v2.9, latest, v2.10-pre]
+        version: [v2.8, v2.9, v2.10, latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -49,7 +49,7 @@ jobs:
           repository: haxorof/ansible
           tag_with_sha: false
           add_git_labels: true
-          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.9,gosu_version=1.12
+          build_args: ansible_version=${{ matrix.version }},docker_version=19.03.13,gosu_version=1.12
           tags: ${{ steps.tag_formatter.outputs.format }}
           dockerfile: Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
