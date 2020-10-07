@@ -64,7 +64,8 @@ jobs:
             docker_version=19.03.13
             gosu_version=1.12
           tags: haxorof/ansible:${{ steps.prep.outputs.tag }}
-          file: Dockerfile.${{ matrix.os }}
+          context: .
+          file: ./Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
 
   update_docker_hub_description:
