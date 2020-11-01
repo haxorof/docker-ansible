@@ -22,12 +22,12 @@ Ansible with additions.
 
 - `v2.10`, `latest-alpine`, `latest`
   - `v2.10-alpine`
+- `latest-centos7`
+  - `v2.10-centos7`
+- `latest-centos8`
+  - `v2.10-centos8`
 - `v2.9`
   - `v2.9-alpine`
-- `latest-centos7`
-  - `v2.9-centos7`
-- `latest-centos8`
-  - `v2.9-centos8`
 - `v2.8`
   - `v2.8-alpine`
 
