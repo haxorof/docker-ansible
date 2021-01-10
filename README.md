@@ -12,13 +12,13 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 
 - `v2.10-alpine`
 - `v2.10-centos7`
-- `v2.10-centos8`
+- `v2.10-ubuntu`
 - `v2.9-alpine`
 - `v2.9-centos7`
-- `v2.9-centos8`
+- `v2.9-ubuntu`
 - `v2.8-alpine`
 - `v2.8-centos7`
-- `v2.8-centos8`
+- `v2.8-ubuntu`
 
 ## Shared Tags
 
@@ -26,8 +26,8 @@ If you find bugs or got improvements of the container, feel free to submit it [h
   - `v2.10-alpine`
 - `latest-centos7`
   - `v2.10-centos7`
-- `latest-centos8`
-  - `v2.10-centos8`
+- `latest-ubuntu`
+  - `v2.10-ubuntu`
 - `v2.9`
   - `v2.9-alpine`
 - `v2.8`

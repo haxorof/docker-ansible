@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [alpine, centos7, centos8, main]
+        os: [alpine, centos7, ubuntu, main]
         version: [v2.8, v2.9, v2.10, latest]
     steps:
       - name: Checkout
@@ -61,7 +61,7 @@ jobs:
             org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
           build-args: |
             ansible_version=${{ matrix.version }}
-            docker_version=19.03.13
+            docker_version=20.10.2
             gosu_version=1.12
           tags: haxorof/ansible:${{ steps.prep.outputs.tag }}
           context: .
