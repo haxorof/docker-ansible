@@ -7,7 +7,7 @@ on:
     branches:
       - master
   schedule:
-    - cron:  '0 0 * * 0'
+    - cron:  '0 1 * * 0'
 
 jobs:
   build_push:
@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         os: [alpine, centos7, ubuntu, main]
-        version: [v2.8, v2.9, v2.10, latest]
+        version: [v2.8, v2.9, v2.10, v3.0-pre, latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -61,7 +61,7 @@ jobs:
             org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
           build-args: |
             ansible_version=${{ matrix.version }}
-            docker_version=20.10.2
+            docker_version=20.10.3
             gosu_version=1.12
           tags: haxorof/ansible:${{ steps.prep.outputs.tag }}
           context: .

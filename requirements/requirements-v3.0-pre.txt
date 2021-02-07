@@ -1,0 +1,4 @@
+ansible==3.0.0b1
+jmespath==0.10.0
+pyvmomi==7.0.1
+netaddr==0.8.0
