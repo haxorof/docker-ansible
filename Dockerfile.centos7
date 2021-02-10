@@ -4,7 +4,6 @@ LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
     org.opencontainers.image.licenses="MIT"
 
-ARG ansible_version
 ARG docker_version
 ARG gosu_version
 
@@ -13,7 +12,8 @@ ENV LC_ALL en_US.UTF-8
 
 ONBUILD USER root
 
-COPY requirements/requirements-${ansible_version}.txt ./requirements.txt
+COPY requirements/requirements.txt ./requirements.txt
+COPY requirements/requirements-extras.txt ./requirements-extras.txt
 
 RUN yum install -y epel-release \
     && yum clean all \
@@ -34,6 +34,7 @@ RUN yum install -y epel-release \
     && gosu nobody true \
     && python -m pip install --no-cache-dir --upgrade pip==20.3.3 \
     && python -m pip install --no-cache-dir -r requirements.txt \
+    && python -m pip install --no-cache-dir -r requirements-extras.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \

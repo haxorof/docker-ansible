@@ -12,10 +12,16 @@ on:
 jobs:
   build_push:
     runs-on: ubuntu-latest
+    env:
+      IMAGE_NAME: haxorof/ansible
+      LATEST_OS: alpine
+      LATEST_VERSION: v2.10
+      DOCKER_CLI_VERSION: "20.10.3"
+      GOSU_VERSION: "1.12"
     strategy:
       matrix:
-        os: [alpine, centos7, ubuntu, main]
-        version: [v2.8, v2.9, v2.10, v3.0-pre, latest]
+        os: [alpine, centos7, ubuntu]
+        version: [v2.8, v2.9, v2.10, v3.0-pre]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -23,13 +29,17 @@ jobs:
       - name: Prepare
         id: prep
         run: |
-          if [[ "$MATRIX_OS" == 'main' ]]; then
-              # Instead of using symbolic links
-              cp Dockerfile.alpine Dockerfile.main > /dev/null 2>&1
-              echo "::set-output name=tag::$MATRIX_VERSION"
-          else
-              echo "::set-output name=tag::${MATRIX_VERSION}-${MATRIX_OS}"
+          cp requirements/requirements-${MATRIX_VERSION}.txt requirements/requirements.txt
+          TAGS="${IMAGE_NAME}:${MATRIX_VERSION}-${MATRIX_OS}"
+          if [[ "$MATRIX_OS" == "$LATEST_OS" ]]; then
+            TAGS="${TAGS},${IMAGE_NAME}:$MATRIX_VERSION"
+            if [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
+              TAGS="${TAGS},${IMAGE_NAME}:latest"
+            fi
+          elif [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
+            TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS}"
           fi
+          echo "::set-output name=tags::${TAGS}"
           echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
         env:
           MATRIX_OS: ${{ matrix.os }}
@@ -56,14 +66,13 @@ jobs:
           labels: |
             org.opencontainers.image.created=${{ steps.prep.outputs.created }}
             org.opencontainers.image.source=${{ github.repositoryUrl }}
-            org.opencontainers.image.version=${{ steps.prep.outputs.tag }}
+            org.opencontainers.image.version=${{ matrix.version }}
             org.opencontainers.image.revision=${{ github.sha }}
             org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
           build-args: |
-            ansible_version=${{ matrix.version }}
-            docker_version=20.10.3
-            gosu_version=1.12
-          tags: haxorof/ansible:${{ steps.prep.outputs.tag }}
+            docker_version=${{ env.DOCKER_CLI_VERSION }}
+            gosu_version=${{ env.GOSU_VERSION }}
+          tags: ${{ steps.prep.outputs.tags }}
           context: .
           file: ./Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
@@ -80,4 +89,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: haxorof/ansible
+          repository: ${{ env.IMAGE_NAME }}

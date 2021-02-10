@@ -4,7 +4,6 @@ LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
     org.opencontainers.image.licenses="MIT"
 
-ARG ansible_version
 ARG docker_version
 ARG gosu_version
 
@@ -13,7 +12,8 @@ ENV LC_ALL en_US.UTF-8
 
 ONBUILD USER root
 
-COPY requirements/requirements-${ansible_version}.txt ./requirements.txt
+COPY requirements/requirements.txt ./requirements.txt
+COPY requirements/requirements-extras.txt ./requirements-extras.txt
 
 RUN apk update \
     && apk add --no-cache linux-headers \
@@ -32,6 +32,7 @@ RUN apk update \
     && gosu nobody true \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
+    && python3 -m pip install --no-cache-dir -r requirements-extras.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \
