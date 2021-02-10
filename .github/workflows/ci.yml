@@ -9,11 +9,13 @@ on:
   schedule:
     - cron:  '0 1 * * 0'
 
+env:
+  IMAGE_NAME: haxorof/ansible
+
 jobs:
   build_push:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: haxorof/ansible
       LATEST_OS: alpine
       LATEST_VERSION: v2.10
       DOCKER_CLI_VERSION: "20.10.3"
