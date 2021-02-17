@@ -39,7 +39,7 @@ RUN dnf install -y epel-release \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \
-    && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python' > /etc/ansible/hosts \
+    && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python3' > /etc/ansible/hosts \
     && dnf clean all \
     && rm -rf /var/cache/yum \
     && useradd -u 1000 ansible-1000 \
