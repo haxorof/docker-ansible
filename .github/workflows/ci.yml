@@ -22,7 +22,7 @@ jobs:
       GOSU_VERSION: "1.12"
     strategy:
       matrix:
-        os: [almalinux, alpine, centos7, ubuntu]
+        os: [almalinux8, alpine, centos7, ubuntu]
         version: [v2.8, v2.9, v2.10, v3.0-pre]
     steps:
       - name: Checkout
