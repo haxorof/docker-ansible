@@ -1,4 +1,4 @@
-FROM centos:7
+FROM almalinux/almalinux:8
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
@@ -15,31 +15,32 @@ ONBUILD USER root
 COPY requirements/requirements.txt ./requirements.txt
 COPY requirements/requirements-extras.txt ./requirements-extras.txt
 
-RUN yum install -y epel-release \
-    && yum clean all \
-    && yum makecache \
-    && yum upgrade -y \
-    && yum install -y \
+RUN dnf install -y epel-release \
+    && dnf clean all \
+    && dnf makecache \
+    && dnf upgrade -y \
+    && dnf install -y \
     openssh \
     sshpass \
     git \
     sudo \
-    python-pip \
+    python3-pip \
     wget \
     curl \
+    glibc-langpack-en \
     tzdata \
     # install gosu for a better su+exec command (remove sudo if this works)
     && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
-    && python -m pip install --no-cache-dir --upgrade pip<21 \
-    && python -m pip install --no-cache-dir -r requirements.txt \
-    && python -m pip install --no-cache-dir -r requirements-extras.txt \
+    && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir -r requirements.txt \
+    && python3 -m pip install --no-cache-dir -r requirements-extras.txt \    
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \
     && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python' > /etc/ansible/hosts \
-    && yum clean all \
+    && dnf clean all \
     && rm -rf /var/cache/yum \
     && useradd -u 1000 ansible-1000 \
     && useradd -u 1001 ansible-1001 \
