@@ -5,6 +5,8 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    assignees:
+      - "haxorof"
   # Maintain dependencies for Docker
   - package-ecosystem: "docker"
     directory: "/"
@@ -12,8 +14,12 @@ updates:
       interval: "daily"
     ignore:
       - dependency-name: "centos*"
+    assignees:
+      - "haxorof"
   # Maintain dependencies for Python PiP
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
       interval: "daily"
+    assignees:
+      - "haxorof"
