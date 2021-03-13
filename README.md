@@ -10,11 +10,11 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 
 ## Simple Tags
 
-- `v3.0-almalinux8`
-- `v3.0-alpine`
-- `v3.0-centos7`
-- `v3.0-centos8`
-- `v3.0-ubuntu`
+- `v3-almalinux8`
+- `v3-alpine`
+- `v3-centos7`
+- `v3-centos8`
+- `v3-ubuntu`
 - `v2.10-almalinux8`
 - `v2.10-alpine`
 - `v2.10-centos7`
@@ -33,16 +33,16 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 
 ## Shared Tags
 
-- `v3.0`, `latest-alpine`, `latest`
-  - `v3.0-alpine`
+- `v3`, `latest-alpine`, `latest`
+  - `v3-alpine`
 - `latest-almalinux8`
-  - `v3.0-almalinux8`
+  - `v3-almalinux8`
 - `latest-centos7`
-  - `v3.0-centos7`
+  - `v3-centos7`
 - `latest-centos8`
-  - `v3.0-centos8`
+  - `v3-centos8`
 - `latest-ubuntu`
-  - `v3.0-ubuntu`
+  - `v3-ubuntu`
 - `v2.10`
   - `v2.10-alpine`
 - `v2.9`
