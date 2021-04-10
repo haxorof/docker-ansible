@@ -1,6 +1,15 @@
 ---
-- hosts: localhost
+- hosts: all
   tasks:
-    - shell: cat /etc/os-release
-    - shell: cat /etc/sudoers.d/ansible
+    - name: Simple test
+      shell: cat /etc/os-release
+
+    - name: Simple test become
+      shell: cat /etc/sudoers.d/ansible
       become: yes
+
+    - name: Wait for port 443 to become open on the host
+      wait_for:
+        host: github.com
+        port: 443
+      delegate_to: localhost
