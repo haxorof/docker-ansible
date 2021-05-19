@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       LATEST_OS: alpine
-      LATEST_VERSION: v3
+      LATEST_VERSION: v4
       DOCKER_CLI_VERSION: "20.10.6"
       GOSU_VERSION: "1.12"
     strategy:
