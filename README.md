@@ -37,8 +37,6 @@ If you find bugs or got improvements of the container, feel free to submit it [h
   - `v3-alpine`
 - `v2.10`
   - `v2.10-alpine`
-- `v2.9`
-  - `v2.9-alpine`
 
 ## Additions
 
