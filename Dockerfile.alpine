@@ -17,8 +17,6 @@ COPY requirements/requirements-extras.txt ./requirements-extras.txt
 
 RUN apk --update-cache upgrade \
     && apk add --no-cache linux-headers \
-    python3 \
-    py3-pip \
     build-base \
     libffi-dev \
     openssl-dev \
