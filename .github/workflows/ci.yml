@@ -68,6 +68,10 @@ jobs:
           context: .
           file: ./Dockerfile.${{ matrix.os }}
 
+      - name: Test built image
+        run: |
+          docker run --rm -v ${PWD}/test:/mnt ${{ steps.prep.outputs.test_tag }}
+
       # - name: Run Trivy vulnerability scanner
       #   uses: aquasecurity/trivy-action@master
       #   with:
@@ -171,6 +175,10 @@ jobs:
           tags: ${{ steps.prep.outputs.test_tag }}
           context: .
           file: ./Dockerfile.${{ matrix.os }}
+
+      - name: Test built image
+        run: |
+          docker run --rm -v ${PWD}/test:/mnt ${{ steps.prep.outputs.test_tag }}
 
       # - name: Run Trivy vulnerability scanner
       #   uses: aquasecurity/trivy-action@master
