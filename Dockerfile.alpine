@@ -1,4 +1,4 @@
-FROM python:3.10.1-alpine
+FROM python:alpine3.15
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
@@ -15,7 +15,7 @@ ONBUILD USER root
 COPY requirements/requirements.txt ./requirements.txt
 COPY requirements/requirements-extras.txt ./requirements-extras.txt
 
-RUN apk update \
+RUN apk --update-cache upgrade \
     && apk add --no-cache linux-headers \
     build-base \
     libffi-dev \
@@ -31,6 +31,7 @@ RUN apk update \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
     && python3 -m pip install --no-cache-dir --upgrade pip \
+    && python3 -m pip install --no-cache-dir --upgrade wheel \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
     && python3 -m pip install --no-cache-dir -r requirements-extras.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
