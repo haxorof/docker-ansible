@@ -15,7 +15,7 @@ ONBUILD USER root
 COPY requirements/requirements.txt ./requirements.txt
 COPY requirements/requirements-extras.txt ./requirements-extras.txt
 
-RUN apk update \
+RUN apk --update-cache upgrade \
     && apk add --no-cache linux-headers \
     build-base \
     libffi-dev \
