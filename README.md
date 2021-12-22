@@ -21,6 +21,8 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 
 - `v5`, `latest-alpine`, `latest`
   - `v5-alpine`
+- `v4`
+  - `v4-alpine`
 - `latest-almalinux8`
   - `v4-almalinux8`
 - `latest-centos8`
