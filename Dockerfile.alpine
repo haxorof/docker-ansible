@@ -31,7 +31,7 @@ RUN apk --update-cache upgrade \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
     && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install wheel \
+    && python3 -m pip install --no-cache-dir --upgrade wheel \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
     && python3 -m pip install --no-cache-dir -r requirements-extras.txt \
     && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
