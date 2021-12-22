@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - trivy
   pull_request:
     branches:
       - master
