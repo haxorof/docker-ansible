@@ -14,7 +14,6 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 - `v5-ubuntu`
 - `v4-almalinux8`
 - `v4-alpine`
-- `v4-centos8`
 - `v4-ubuntu`
 
 ## Shared Tags
@@ -25,8 +24,6 @@ If you find bugs or got improvements of the container, feel free to submit it [h
   - `v4-alpine`
 - `latest-almalinux8`
   - `v4-almalinux8`
-- `latest-centos8`
-  - `v4-centos8`
 - `latest-ubuntu`
   - `v5-ubuntu`
 

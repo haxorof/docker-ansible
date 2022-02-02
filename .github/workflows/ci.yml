@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [almalinux8, centos8]
+        os: [almalinux8]
         version: [v4]
     steps:
       - name: Checkout
