@@ -14,7 +14,7 @@ env:
   LATEST_OS: alpine
   LATEST_VERSION: v5
   DOCKER_CLI_VERSION: "20.10.11"
-  GOSU_VERSION: "1.12"
+  GOSU_VERSION: "1.14"
 
 jobs:
   build_push_before_python38:
