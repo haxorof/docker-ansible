@@ -33,13 +33,7 @@ jobs:
           cp requirements/requirements-${MATRIX_VERSION}.txt requirements/requirements.txt
           TAGS="${IMAGE_NAME}:${MATRIX_VERSION}-${MATRIX_OS}"
           TEST_TAG="${TAGS}"
-          if [[ "$MATRIX_OS" == "$LATEST_OS" ]]; then
-            TAGS="${TAGS},${IMAGE_NAME}:$MATRIX_VERSION"
-            if [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
-              TAGS="${TAGS},${IMAGE_NAME}:latest"
-            fi
-          elif [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
-            TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS},${IMAGE_NAME}:latest-${MATRIX_OS}"
+          TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS}"
           fi
           echo "::set-output name=test_tag::${TEST_TAG}"
           echo "::set-output name=tags::${TAGS}"
@@ -144,10 +138,10 @@ jobs:
           if [[ "$MATRIX_OS" == "$LATEST_OS" ]]; then
             TAGS="${TAGS},${IMAGE_NAME}:$MATRIX_VERSION"
             if [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
-              TAGS="${TAGS},${IMAGE_NAME}:latest"
+              TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS},${IMAGE_NAME}:latest"
             fi
           elif [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
-            TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS},${IMAGE_NAME}:latest-${MATRIX_OS}"
+            TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS}"
           fi
           echo "::set-output name=test_tag::${TEST_TAG}"
           echo "::set-output name=tags::${TAGS}"
