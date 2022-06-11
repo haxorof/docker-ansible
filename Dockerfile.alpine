@@ -13,7 +13,7 @@ ENV LC_ALL en_US.UTF-8
 ONBUILD USER root
 
 COPY requirements/requirements.txt ./requirements.txt
-COPY requirements/requirements-extras-py38.txt ./requirements-extras.txt
+COPY requirements/extras/requirements-py38.txt ./requirements-extras.txt
 
 RUN apk --update-cache upgrade \
     && apk add --no-cache linux-headers \
