@@ -122,7 +122,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [alpine, ubuntu]
+        os: [almalinux, alpine, ubuntu]
         version: [v4, v5, v6]
     steps:
       - name: Checkout

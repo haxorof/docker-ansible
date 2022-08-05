@@ -1,4 +1,4 @@
-FROM almalinux:8.6-20220706
+FROM almalinux:9.0-20220706
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
@@ -25,19 +25,20 @@ RUN dnf install -y epel-release \
     git \
     sudo \
     python3-pip \
+    tar \
     wget \
-    curl \
+    curl-minimal \
     glibc-langpack-en \
     tzdata \
     # install gosu for a better su+exec command (remove sudo if this works)
-    && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
+    && curl -o /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
     && python3 -m pip install --no-cache-dir --upgrade pip \
     && python3 -m pip install --no-cache-dir --upgrade wheel \
     && python3 -m pip install --no-cache-dir -r requirements.txt \
     && python3 -m pip install --no-cache-dir -r requirements-extras.txt \
-    && wget -O - https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
+    && curl https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \
     && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python3' > /etc/ansible/hosts \

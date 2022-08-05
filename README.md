@@ -10,6 +10,10 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 
 ## Simple Tags
 
+- `v6-almalinux`
+- `v6-alpine`
+- `v6-ubuntu`
+- `v5-almalinux`
 - `v5-alpine`
 - `v5-ubuntu`
 - `v4-almalinux8`
@@ -18,10 +22,14 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 
 ## Shared Tags
 
-- `v5`, `latest-alpine`, `latest`
+- `v6`, `latest-alpine`, `latest`
+  - `v6-alpine`
+- `v5`
   - `v5-alpine`
 - `v4`
   - `v4-alpine`
+- `latest-almalinux`
+  - `v6-almalinux`
 - `latest-almalinux8`
   - `v4-almalinux8`
 - `latest-ubuntu`
