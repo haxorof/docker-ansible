@@ -16,7 +16,7 @@ If you find bugs or got improvements of the container, feel free to submit it [h
 - `v5-almalinux`
 - `v5-alpine`
 - `v5-ubuntu`
-- `v4-almalinux8`
+- `v4-almalinux`
 - `v4-alpine`
 - `v4-ubuntu`
 
@@ -30,10 +30,8 @@ If you find bugs or got improvements of the container, feel free to submit it [h
   - `v4-alpine`
 - `latest-almalinux`
   - `v6-almalinux`
-- `latest-almalinux8`
-  - `v4-almalinux8`
 - `latest-ubuntu`
-  - `v5-ubuntu`
+  - `v6-ubuntu`
 
 ## Additions
 
