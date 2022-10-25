@@ -41,9 +41,9 @@ jobs:
           elif [[ "$MATRIX_VERSION" == "$LATEST_VERSION" ]]; then
             TAGS="${TAGS},${IMAGE_NAME}:latest-${MATRIX_OS}"
           fi
-          echo "::set-output name=test_tag::${TEST_TAG}"
-          echo "::set-output name=tags::${TAGS}"
-          echo ::set-output name=created::$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          echo "test_tag=${TEST_TAG}" >> $GITHUB_OUTPUT
+          echo "tags=${TAGS}" >> $GITHUB_OUTPUT
+          echo "created=$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> $GITHUB_OUTPUT
         env:
           MATRIX_OS: ${{ matrix.os }}
           MATRIX_VERSION: ${{ matrix.version }}
@@ -123,6 +123,26 @@ jobs:
           context: .
           file: ./Dockerfile.${{ matrix.os }}
           push: ${{ endsWith(github.ref, '/master') }}
+
+  dependabot:
+    if: ${{ github.event_name == 'pull_request' && github.actor == 'dependabot[bot]' }}
+    needs: build_push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Dependabot metadata
+        id: dependabot-metadata
+        uses: dependabot/fetch-metadata@v1.3.4
+        with:
+          github-token: "${{ secrets.GITHUB_TOKEN }}"
+      - name: Enable auto-merge for Dependabot PRs
+        if: ${{steps.dependabot-metadata.outputs.package-ecosystem == 'github_actions'}}
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   update_docker_hub_description:
     needs: build_push
