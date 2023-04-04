@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:23.04
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
       org.opencontainers.image.description="Ansible + additions" \
@@ -42,6 +42,7 @@ RUN apt-get clean \
     && mkdir -p /etc/ansible/roles \
     && echo 'localhost ansible_connection=local ansible_python_interpreter=/usr/bin/python3' > /etc/ansible/hosts \
     && apt-get clean \
+    && userdel -r ubuntu \
     && useradd -m -u 1000 ansible-1000 \
     && useradd -m -u 1001 ansible-1001 \
     && useradd -m -u 10000 ansible-10000 \
