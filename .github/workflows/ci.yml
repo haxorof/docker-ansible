@@ -91,7 +91,6 @@ jobs:
         id: scan
         with:
           image: ${{ steps.prep.outputs.test_tag }}
-          acs-report-enable: true
           fail-build: false
           severity-cutoff: critical
 
