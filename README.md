@@ -8,30 +8,22 @@ Ansible with additions.
 
 If you find bugs or got improvements of the container, feel free to submit it [here](https://github.com/haxorof/docker-ansible/issues).
 
+This repos stop supporting versions as it gets EOL according to [Ansible - Releases and maintenance](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html).
+
 ## Simple Tags
 
-- `v7-almalinux`
-- `v7-alpine`
-- `v7-ubuntu`
-- `v6-almalinux`
-- `v6-alpine`
-- `v6-ubuntu`
-- `v5-almalinux`
-- `v5-alpine`
-- `v5-ubuntu`
+- `v8-almalinux`
+- `v8-alpine`
+- `v8-ubuntu`
 
 ## Shared Tags
 
-- `v7`, `latest-alpine`, `latest`
-  - `v7-alpine`
-- `v6`
-  - `v6-alpine`
-- `v5`
-  - `v5-alpine`
+- `v8`, `latest-alpine`, `latest`
+  - `v8-alpine`
 - `latest-almalinux`
-  - `v7-almalinux`
+  - `v8-almalinux`
 - `latest-ubuntu`
-  - `v7-ubuntu`
+  - `v8-ubuntu`
 
 ## Additions
 
