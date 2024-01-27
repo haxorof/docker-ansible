@@ -23,9 +23,9 @@ updates:
       interval: "daily"
     assignees:
       - "haxorof"
-  # Maintain dependencies for Python PiP (v8)
+  # Maintain dependencies for Python PiP (v9)
   - package-ecosystem: pip
-    directory: "/requirements/v8"
+    directory: "/requirements/v9"
     schedule:
       interval: daily
     assignees:

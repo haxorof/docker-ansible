@@ -12,18 +12,18 @@ This repos stop supporting versions as it gets EOL according to [Ansible - Relea
 
 ## Simple Tags
 
-- `v8-almalinux`
-- `v8-alpine`
-- `v8-ubuntu`
+- `v9-almalinux`
+- `v9-alpine`
+- `v9-ubuntu`
 
 ## Shared Tags
 
-- `v8`, `latest-alpine`, `latest`
-  - `v8-alpine`
+- `v9`, `latest-alpine`, `latest`
+  - `v9-alpine`
 - `latest-almalinux`
-  - `v8-almalinux`
+  - `v9-almalinux`
 - `latest-ubuntu`
-  - `v8-ubuntu`
+  - `v9-ubuntu`
 
 ## Additions
 
