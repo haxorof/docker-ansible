@@ -1,4 +1,4 @@
-FROM almalinux:9.3-20231124
+FROM almalinux/9-base:9.3-20231124
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
@@ -7,8 +7,10 @@ LABEL org.opencontainers.image.title="haxorof/ansible" \
 ARG docker_version
 ARG gosu_version
 
-ENV LANG en_US.UTF-8
-ENV LC_ALL en_US.UTF-8
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
+ENV VIRTUAL_ENV=/.env
+ENV PATH=$VIRTUAL_ENV/bin:$PATH
 
 ONBUILD USER root
 
@@ -24,7 +26,8 @@ RUN dnf install -y epel-release \
     sshpass \
     git \
     sudo \
-    python3-pip \
+    python3.11 \
+    python3.11-pip \
     tar \
     wget \
     curl-minimal \
@@ -34,10 +37,11 @@ RUN dnf install -y epel-release \
     && curl -o /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
-    && python3 -m pip install --no-cache-dir --upgrade pip \
-    && python3 -m pip install --no-cache-dir --upgrade wheel \
-    && python3 -m pip install --no-cache-dir -r requirements.txt \
-    && python3 -m pip install --no-cache-dir -r requirements-extras.txt \
+    && python3.11 -m venv ${VIRTUAL_ENV} \
+    && python3.11 -m pip install --no-cache-dir --upgrade pip \
+    && python3.11 -m pip install --no-cache-dir --upgrade wheel \
+    && python3.11 -m pip install --no-cache-dir -r requirements.txt \
+    && python3.11 -m pip install --no-cache-dir -r requirements-extras.txt \
     && curl https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \

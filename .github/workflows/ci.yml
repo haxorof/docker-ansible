@@ -13,16 +13,16 @@ env:
   IMAGE_NAME: haxorof/ansible
   LATEST_OS: alpine
   LATEST_VERSION: v9
-  DOCKER_CLI_VERSION: "24.0.5"
-  GOSU_VERSION: "1.16"
+  DOCKER_CLI_VERSION: "25.0.5"
+  GOSU_VERSION: "1.17"
 
 jobs:
   build_push:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        os: [alpine, ubuntu]
-        version: [v8,v9]
+        os: [alpine, almalinux, ubuntu]
+        version: [v9]
     steps:
       - name: Checkout
         uses: actions/checkout@v4

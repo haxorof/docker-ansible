@@ -9,6 +9,8 @@ ARG gosu_version
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEFAULT_LOCAL_TMP=/var/tmp/.ansible/tmp
+ENV VIRTUAL_ENV=/.env
+ENV PATH=$VIRTUAL_ENV/bin:$PATH
 
 ONBUILD USER root
 
@@ -24,6 +26,7 @@ RUN apt-get clean \
     git \
     sudo \
     python3-pip \
+    python3-venv \
     wget \
     curl \
     tzdata \
@@ -32,6 +35,7 @@ RUN apt-get clean \
     && wget -O /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
+    && python3 -m venv ${VIRTUAL_ENV} \
     && python3 -m pip install --no-cache-dir --break-system-packages --upgrade pip \
     && python3 -m pip install --no-cache-dir --break-system-packages --upgrade wheel \
     && python3 -m pip install --no-cache-dir --break-system-packages --upgrade --ignore-installed pyyaml \
