@@ -12,8 +12,10 @@ on:
 env:
   IMAGE_NAME: haxorof/ansible
   LATEST_OS: alpine
-  LATEST_VERSION: v9
-  DOCKER_CLI_VERSION: "25.0.5"
+  LATEST_VERSION: v10
+  # https://download.docker.com/linux/static/stable/x86_64/
+  DOCKER_CLI_VERSION: "27.0.2"
+  # https://github.com/tianon/gosu/releases
   GOSU_VERSION: "1.17"
 
 jobs:
@@ -22,7 +24,7 @@ jobs:
     strategy:
       matrix:
         os: [alpine, almalinux, ubuntu]
-        version: [v9]
+        version: [v9, v10]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -71,20 +73,6 @@ jobs:
       - name: Test built image
         run: |
           docker run --rm -v ${PWD}/test:/mnt ${{ steps.prep.outputs.test_tag }}
-
-      # - name: Run Trivy vulnerability scanner
-      #   uses: aquasecurity/trivy-action@master
-      #   with:
-      #     image-ref: ${{ steps.prep.outputs.test_tag }}
-      #     format: 'template'
-      #     template: '@/contrib/sarif.tpl'
-      #     output: 'trivy-results.sarif'
-      #     severity: 'CRITICAL'
-
-      # - name: Upload Trivy scan results to GitHub Security tab
-      #   uses: github/codeql-action/upload-sarif@v3
-      #   with:
-      #     sarif_file: 'trivy-results.sarif'
 
       - name: Scan container image
         uses: anchore/scan-action@v3
