@@ -75,7 +75,7 @@ jobs:
           docker run --rm -v ${PWD}/test:/mnt ${{ steps.prep.outputs.test_tag }}
 
       - name: Scan container image
-        uses: anchore/scan-action@v4
+        uses: anchore/scan-action@v5
         id: scan
         with:
           image: ${{ steps.prep.outputs.test_tag }}
