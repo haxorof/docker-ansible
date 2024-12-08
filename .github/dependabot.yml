@@ -23,9 +23,9 @@ updates:
       interval: "daily"
     assignees:
       - "haxorof"
-  # Maintain dependencies for Python PiP (v8)
+  # Maintain dependencies for Python PiP
   - package-ecosystem: pip
-    directory: "/requirements/v8"
+    directory: "/requirements/v10"
     schedule:
       interval: daily
     assignees:
@@ -33,9 +33,9 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
-  # Maintain dependencies for Python PiP (v9)
+  # Maintain dependencies for Python PiP
   - package-ecosystem: pip
-    directory: "/requirements/v9"
+    directory: "/requirements/v11"
     schedule:
       interval: daily
     assignees:
