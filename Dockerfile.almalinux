@@ -1,4 +1,4 @@
-FROM almalinux/9-base:9.5-20241118
+FROM almalinux/9-base:9.5-20250307
 
 LABEL org.opencontainers.image.title="haxorof/ansible" \
     org.opencontainers.image.description="Ansible + additions" \
