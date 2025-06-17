@@ -51,7 +51,7 @@ jobs:
           MATRIX_VERSION: ${{ matrix.version }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3.10.0
+        uses: docker/setup-buildx-action@v3.11.0
 
       - name: Build and Push
         uses: docker/build-push-action@v6.18.0
