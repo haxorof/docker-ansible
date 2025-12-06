@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: test
   tasks:
     - name: Simple test
       ansible.builtin.shell: cat /etc/os-release

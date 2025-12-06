@@ -72,7 +72,7 @@ jobs:
 
       - name: Test built image
         run: |
-          docker run --rm -v ${PWD}/test:/mnt ${{ steps.prep.outputs.test_tag }}
+          docker run --rm -v ${PWD}/test:/mnt ${{ steps.prep.outputs.test_tag }} ansible-playbook -i hosts playbook.yml
 
       - name: Scan container image
         uses: anchore/scan-action@v7
