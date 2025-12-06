@@ -2,14 +2,14 @@
 - hosts: all
   tasks:
     - name: Simple test
-      shell: cat /etc/os-release
+      ansible.builtin.shell: cat /etc/os-release
 
     - name: Simple test become
-      shell: cat /etc/sudoers.d/ansible
+      ansible.builtin.shell: cat /etc/sudoers.d/ansible
       become: yes
 
     - name: Wait for port 443 to become open on the host
-      wait_for:
+      ansible.builtin.wait_for:
         host: github.com
         port: 443
       delegate_to: localhost
