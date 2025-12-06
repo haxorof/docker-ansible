@@ -26,8 +26,8 @@ RUN dnf install -y epel-release \
     sshpass \
     git \
     sudo \
-    python3.11 \
-    python3.11-pip \
+    python3.12 \
+    python3.12-pip \
     tar \
     wget \
     curl-minimal \
@@ -37,11 +37,11 @@ RUN dnf install -y epel-release \
     && curl -o /usr/bin/gosu "https://github.com/tianon/gosu/releases/download/$gosu_version/gosu-amd64" \
     && chmod +x /usr/bin/gosu \
     && gosu nobody true \
-    && python3.11 -m venv ${VIRTUAL_ENV} \
-    && python3.11 -m pip install --no-cache-dir --upgrade pip \
-    && python3.11 -m pip install --no-cache-dir --upgrade wheel \
-    && python3.11 -m pip install --no-cache-dir -r requirements.txt \
-    && python3.11 -m pip install --no-cache-dir -r requirements-extras.txt \
+    && python3.12 -m venv ${VIRTUAL_ENV} \
+    && python3.12 -m pip install --no-cache-dir --upgrade pip \
+    && python3.12 -m pip install --no-cache-dir --upgrade wheel \
+    && python3.12 -m pip install --no-cache-dir -r requirements.txt \
+    && python3.12 -m pip install --no-cache-dir -r requirements-extras.txt \
     && curl https://download.docker.com/linux/static/stable/x86_64/docker-${docker_version}.tgz | tar -xz -C /usr/lib \
     && ln -s /usr/lib/docker/docker /usr/bin/docker \
     && mkdir -p /etc/ansible/roles \

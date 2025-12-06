@@ -12,21 +12,18 @@ This repos stop supporting versions as it gets EOL according to [Ansible - Relea
 
 ## Simple Tags
 
-- `v11-alpine`
-- `v11-almalinux`
-- `v11-ubuntu`
-- `v10-alpine`
-- `v10-almalinux`
-- `v10-ubuntu`
+- `v13-alpine`
+- `v13-almalinux`
+- `v13-ubuntu`
 
 ## Shared Tags
 
-- `v11`, `latest-alpine`, `latest`
-  - `v11-alpine`
+- `v13`, `latest-alpine`, `latest`
+  - `v13-alpine`
 - `latest-almalinux`
-  - `v11-almalinux`
+  - `v13-almalinux`
 - `latest-ubuntu`
-  - `v11-ubuntu`
+  - `v13-ubuntu`
 
 ## Additions
 
