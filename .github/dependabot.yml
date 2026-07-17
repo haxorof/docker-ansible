@@ -33,3 +33,13 @@ updates:
     ignore:
       - dependency-name: "*"
         update-types: ["version-update:semver-major"]
+  # Maintain dependencies for Python PiP
+  - package-ecosystem: pip
+    directory: "/requirements/v14"
+    schedule:
+      interval: daily
+    assignees:
+      - "haxorof"
+    ignore:
+      - dependency-name: "*"
+        update-types: ["version-update:semver-major"]

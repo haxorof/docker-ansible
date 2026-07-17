@@ -6,24 +6,27 @@
 
 Ansible with additions.
 
-If you find bugs or got improvements of the container, feel free to submit it [here](https://github.com/haxorof/docker-ansible/issues).
+If you find bugs or got improvements of the container, feel free to [submit an issue](https://github.com/haxorof/docker-ansible/issues).
 
 This repos stop supporting versions as it gets EOL according to [Ansible - Releases and maintenance](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html).
 
 ## Simple Tags
 
+- `v14-alpine`
+- `v14-almalinux`
+- `v14-ubuntu`
 - `v13-alpine`
 - `v13-almalinux`
 - `v13-ubuntu`
 
 ## Shared Tags
 
-- `v13`, `latest-alpine`, `latest`
-  - `v13-alpine`
+- `v14`, `latest-alpine`, `latest`
+  - `v14-alpine`
 - `latest-almalinux`
-  - `v13-almalinux`
+  - `v14-almalinux`
 - `latest-ubuntu`
-  - `v13-ubuntu`
+  - `v14-ubuntu`
 
 ## Additions
 
@@ -46,7 +49,6 @@ Container will run as user `ansible-10000` by default. However, when you build y
 ### Python libraries
 
 - jmespath
-- pyvmomi (for VMWare modules)
 - netaddr
 
 ### Packages/Tools
